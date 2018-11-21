@@ -13,8 +13,8 @@ class ViewController: UIViewController {
 
     var manager: ScreenShotActionHelper!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         manager = ScreenShotActionHelper.init(delegate: self)
         manager.startListeningForScreenshots()
     }

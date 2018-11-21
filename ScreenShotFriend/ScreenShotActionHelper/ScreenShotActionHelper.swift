@@ -14,7 +14,7 @@ class ScreenShotActionHelper {
     private weak var delegate: ScreenShotActionHelperDelegate?
     private var configuration: ScreenShotActionCardConfiguration
     
-    public init(delegate: ScreenShotActionHelperDelegate, appearanceConfiguration: ScreenShotActionCardConfiguration) {
+    public init(delegate: ScreenShotActionHelperDelegate, appearanceConfiguration: ScreenShotActionCardConfiguration = ScreenShotActionCardConfiguration()) {
         self.delegate = delegate
         self.configuration = appearanceConfiguration
     }

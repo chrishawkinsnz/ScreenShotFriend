@@ -72,8 +72,10 @@ public class ScreenShotActionCardConfiguration {
 
         // Notched devices may get a little extra height
         if #available(iOS 11.0, *) {
-            insets.bottom = max(UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0, 10)
-            insets.right = max(UIApplication.shared.keyWindow?.safeAreaInsets.right ?? 0, 10)
+            if ((UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0) > 0) {
+                insets.bottom += 16.0
+                insets.right = 8.0
+            }
         }
 
         return insets
@@ -103,4 +105,9 @@ public class ScreenShotActionCardConfiguration {
     public var imageCardAppearance: CardAppearanceConfiguration = CardAppearanceConfiguration()
     
     public var swipeToDismissAppearanceConfiguration: SwipeToDismissConfiguration = SwipeToDismissConfiguration()
+    
+    /// Initializes the configuration with all default values
+    public init() {
+        
+    }
 }
