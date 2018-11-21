@@ -11,10 +11,12 @@ import Foundation
 public
 class ScreenShotActionHelper {
     
-    weak var delegate: ScreenShotActionHelperDelegate?
+    private weak var delegate: ScreenShotActionHelperDelegate?
+    private var configuration: ScreenShotActionCardConfiguration
     
-    public init(delegate: ScreenShotActionHelperDelegate) {
+    public init(delegate: ScreenShotActionHelperDelegate, appearanceConfiguration: ScreenShotActionCardConfiguration) {
         self.delegate = delegate
+        self.configuration = appearanceConfiguration
     }
     
     public func startListeningForScreenshots() {
@@ -35,13 +37,11 @@ class ScreenShotActionHelper {
         guard let image = window.renderToImage() else { return }
         guard let delegate = delegate else { return }
         
-        let config = delegate.appearanceConfiguration
-        
         let card = ScreenShotActionCard.create(
             with: image,
             title: delegate.titleForScreenshotActionCard,
             subtitle: delegate.subtitleForScreenshotCard ?? "",
-            appearanceConfiguration: delegate.appearanceConfiguration,
+            appearanceConfiguration: configuration,
             onSelect: { [weak self] (image) in
                 self?.delegate?.didSelectScreenshotAction(image: image)
         })
@@ -51,7 +51,7 @@ class ScreenShotActionHelper {
         card.startDisppearTimer()
         card.fadeInElements()
         
-        let spacing = config.cardEdgeSpacing
+        let spacing = configuration.cardEdgeSpacing
         NSLayoutConstraint.activate([
             card.trailingAnchor.constraint(equalTo: window.trailingAnchor, constant: -spacing.right),
             card.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: -spacing.bottom),
@@ -59,17 +59,17 @@ class ScreenShotActionHelper {
         ])
 
         card.alpha = 0.0
-        UIView.animate(withDuration: delegate.appearanceConfiguration.cardAppearanceAnimationDuration) {
+        UIView.animate(withDuration: configuration.cardAppearanceAnimationDuration) {
             card.alpha = 1.0
         }
-        let scaleFactor = delegate.appearanceConfiguration.cardAppearanceScaleUpFactor
+        let scaleFactor = configuration.cardAppearanceScaleUpFactor
         card.transform = CGAffineTransform.identity.scaledBy(x: scaleFactor, y: scaleFactor)
         card.transform = CGAffineTransform.identity.translatedBy(
-            x: UIScreen.main.bounds.size.width * delegate.appearanceConfiguration.cardAppearanceFractionalHorizontalOffset,
-            y: UIScreen.main.bounds.size.height * delegate.appearanceConfiguration.cardAppearanceFractionalVerticalOffset
+            x: UIScreen.main.bounds.size.width * configuration.cardAppearanceFractionalHorizontalOffset,
+            y: UIScreen.main.bounds.size.height * configuration.cardAppearanceFractionalVerticalOffset
         )
         
-        UIView.animate(withDuration: config.cardAppearanceSettlingAnimationDuration) {
+        UIView.animate(withDuration: configuration.cardAppearanceSettlingAnimationDuration) {
             card.transform = CGAffineTransform.identity
         }
     }

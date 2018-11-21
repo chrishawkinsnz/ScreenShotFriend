@@ -23,9 +23,6 @@ public protocol ScreenShotActionHelperDelegate: class {
     /// Defaults to the applications key window
     var hostingViewForScreenshotCard: UIView { get }
     
-    /// The appearance of screenshot card
-    /// The default value of this uses the configuration options expsed by the default initalizer for ScreenShotActionCardConfiguration
-    var appearanceConfiguration: ScreenShotActionCardConfiguration { get }
 }
 
 public extension ScreenShotActionHelperDelegate {
@@ -38,7 +35,4 @@ public extension ScreenShotActionHelperDelegate {
         return UIApplication.shared.keyWindow!
     }
     
-    var appearanceConfiguration: ScreenShotActionCardConfiguration {
-        return ScreenShotActionCardConfiguration()
-    }
 }
