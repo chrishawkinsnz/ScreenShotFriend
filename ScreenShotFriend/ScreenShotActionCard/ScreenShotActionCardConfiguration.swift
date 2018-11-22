@@ -73,8 +73,8 @@ public class ScreenShotActionCardConfiguration {
         // Notched devices may get a little extra height
         if #available(iOS 11.0, *) {
             if ((UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0) > 0) {
-                insets.bottom += 16.0
-                insets.right = 8.0
+                insets.bottom += 11.0
+                insets.right += 8.0
             }
         }
 

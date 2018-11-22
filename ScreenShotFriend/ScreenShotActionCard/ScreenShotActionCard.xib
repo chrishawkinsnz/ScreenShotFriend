@@ -40,13 +40,13 @@
                             <rect key="frame" x="8" y="-6.5" width="47" height="72"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="goc-TL-fau">
-                                    <rect key="frame" x="8" y="4" width="35" height="60"/>
+                                    <rect key="frame" x="4" y="4" width="39" height="64"/>
                                 </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="goc-TL-fau" firstAttribute="leading" secondItem="EfQ-36-1PH" secondAttribute="leading" constant="8" id="1dc-78-45d"/>
-                                <constraint firstAttribute="bottom" secondItem="goc-TL-fau" secondAttribute="bottom" constant="8" id="F34-mX-SWh"/>
+                                <constraint firstItem="goc-TL-fau" firstAttribute="leading" secondItem="EfQ-36-1PH" secondAttribute="leading" constant="4" id="1dc-78-45d"/>
+                                <constraint firstAttribute="bottom" secondItem="goc-TL-fau" secondAttribute="bottom" constant="4" id="F34-mX-SWh"/>
                                 <constraint firstAttribute="height" constant="72" id="K0I-jT-9cV"/>
                                 <constraint firstAttribute="trailing" secondItem="goc-TL-fau" secondAttribute="trailing" constant="4" id="S1f-ym-12v"/>
                                 <constraint firstAttribute="width" constant="47" id="fyR-bF-bIv"/>
