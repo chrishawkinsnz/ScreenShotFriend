@@ -8,8 +8,7 @@
 
 import Foundation
 
-public
-class ScreenShotActionHelper {
+open class ScreenShotActionHelper {
     
     private weak var delegate: ScreenShotActionHelperDelegate?
     private var configuration: ScreenShotActionCardConfiguration
@@ -32,7 +31,7 @@ class ScreenShotActionHelper {
     }
     
     @objc
-    func tookScreenshot(_: NSNotification) {
+    open func tookScreenshot(_: NSNotification) {
         guard let window = UIApplication.shared.keyWindow else { return }
         guard let image = window.renderToImage() else { return }
         guard let delegate = delegate else { return }
