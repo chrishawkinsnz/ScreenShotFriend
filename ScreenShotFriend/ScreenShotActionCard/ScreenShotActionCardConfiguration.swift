@@ -23,13 +23,13 @@ public class ScreenShotActionCardConfiguration {
     public var imageTiltAngle: CGFloat = -0.14
     
     /// The delay before the imageView fades in
-    public var imageViewFadeInDelay: TimeInterval = 0.5
+    public var imageViewFadeInDelay: TimeInterval = 0.4
     
     /// The delay before the title fades in
     public var titleLabelFadeInDelay: TimeInterval = 0.62
     
     /// The delay before the detail fades in
-    public var detailLabelFadeInDelay: TimeInterval = 0.62
+    public var detailLabelFadeInDelay: TimeInterval = 0.67
     
     /// The delay before the disclosure icon fades in
     public var disclosureIconFadeInDelay: TimeInterval = 0.72
@@ -70,11 +70,11 @@ public class ScreenShotActionCardConfiguration {
     public var cardEdgeSpacing: UIEdgeInsets = {
         var insets = UIEdgeInsets(top: 0, left: 114, bottom: 10, right: 10)
 
-        // Notched devices may get a little extra height
+        // Notched devices get moved a little away from the edges
         if #available(iOS 11.0, *) {
             if ((UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0) > 0) {
-                insets.bottom += 11.0
-                insets.right += 8.0
+                insets.bottom += 9.0
+                insets.right += 24.0
             }
         }
 
@@ -99,7 +99,16 @@ public class ScreenShotActionCardConfiguration {
     }
     
     /// The appearance properties for the main cards cardy appearance
-    public var mainCardAppearance: CardAppearanceConfiguration = CardAppearanceConfiguration()
+    public var mainCardAppearance: CardAppearanceConfiguration = {
+        let baseAppearance = CardAppearanceConfiguration()
+        // To better fit the curved screen benotched devices get a larger radius
+        if #available(iOS 11.0, *) {
+            if ((UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0) > 0) {
+                baseAppearance.cornerRadius = 10
+            }
+        }
+        return baseAppearance
+    }()
     
     /// The appearance properties for the image cards cardy appearance
     public var imageCardAppearance: CardAppearanceConfiguration = CardAppearanceConfiguration()
