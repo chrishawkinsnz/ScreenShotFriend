@@ -73,8 +73,8 @@ public class ScreenShotActionCardConfiguration {
         // Notched devices get moved a little away from the edges
         if #available(iOS 11.0, *) {
             if ((UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0) > 0) {
-                insets.bottom += 9.0
-                insets.right += 24.0
+                insets.bottom += 15.0
+                insets.right += 12
             }
         }
 
@@ -104,7 +104,7 @@ public class ScreenShotActionCardConfiguration {
         // To better fit the curved screen benotched devices get a larger radius
         if #available(iOS 11.0, *) {
             if ((UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0) > 0) {
-                baseAppearance.cornerRadius = 10
+                baseAppearance.cornerRadius = 12
             }
         }
         return baseAppearance
